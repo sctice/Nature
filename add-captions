@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+
+SHADOW_OFFSET="6,6"
+TEXT_OFFSET="5,5"
+FONT="/System/Library/Fonts/HelveticaNeue.ttc"
+POINTSIZE=12
+
+caption() {
+  local outfile="$1"
+  local text="$2"
+  local infile="Originals/${outfile}"
+
+  if [ ! -e "$outfile" ]; then
+    ensure_directories "$outfile"
+    make_caption "$infile" "$text" "$outfile"
+  fi
+}
+
+ensure_directories() {
+  dir=$(dirname "$1")
+  mkdir -p "$dir"
+}
+
+make_caption() {
+  local infile="$1"
+  local text="$2"
+  local outfile="$3"
+
+  gm convert "$infile" \
+    -font $FONT -pointsize $POINTSIZE \
+    -gravity southwest \
+    -fill black -draw "text $SHADOW_OFFSET \"$text\"" \
+    -fill white -draw "text $TEXT_OFFSET \"$text\"" \
+    "$outfile"
+}
+
+winter() {
+  caption 1-Winter/andreea-chidu-234595.jpg 'Lake Louise — Alberta, Canada'
+  caption 1-Winter/bachalpsee-mountains.jpg 'Bachalpsee Lake — Grindelwald, Switzerland'
+  caption 1-Winter/blue-morning.jpg 'Sulqan — Tehran, Iran'
+  caption 1-Winter/emerald-bay.jpg 'Emerald Bay, Lake Tahoe — California'
+  caption 1-Winter/first-light-of-winter.jpg 'Kootenay River — British Columbia, Canada'
+  caption 1-Winter/loch-annaachlaise.jpg 'Lochan na Achlaise — Glencoe, Scotland'
+  caption 1-Winter/morning-mist.jpg 'Mt. Rainier — Washington'
+  caption 1-Winter/mount-cook.jpg 'Mount Cook — New Zealand'
+  caption 1-Winter/mount-fuji.jpg 'Mt. Fuji — Honshū, Japan'
+  caption 1-Winter/nightfall-at-lake-aurora.jpg 'Composite — Bannalpsee, Switzerland & Iceland Sky'
+  caption 1-Winter/riffelsee.jpg 'Riffelsee — Zermatt, Switzerland'
+  caption 1-Winter/sea-of-clouds.jpg 'Rigi Mountains — Switzerland'
+  caption 1-Winter/the-salton-sea.jpg 'Salton Sea — California'
+}
+
+spring() {
+  caption 2-Spring/abavariansunset.jpg 'Schrecksee — South Germany — 47.4386, 10.4652'
+  caption 2-Spring/coloursofmiddleearth.jpg 'Lake Wakatipu — New Zealand'
+  caption 2-Spring/empire-of-the-alps.jpg 'Lake Klöntalersee — Glarus, Switzerland'
+  caption 2-Spring/glow-behind-hood.jpg 'Mount Hood — Portland, Oregon'
+  caption 2-Spring/grampiansdawn.jpg 'Lake Fyans — Victoria, Australia'
+  caption 2-Spring/iceland-sunset.jpg 'Vik — Iceland'
+  caption 2-Spring/light-and-rain.jpg 'Highway 285 South — New Mexico'
+  caption 2-Spring/lonelyisland.jpg 'Phi Phi Islands — Thailand'
+  caption 2-Spring/lonesome-shepherd.jpg 'Alborz Mountains — Damavand, Iran'
+  caption 2-Spring/milky-way-over-a-thawing-bow-lake.jpg 'Bow Lake — Alberta — 51.6780, -116.4640'
+  caption 2-Spring/misty-sunrise.jpg 'Kardzhali Dam — Bulgaria'
+  caption 2-Spring/pureness.jpg 'Tar Lake — Damavand, Iran'
+  caption 2-Spring/risingmountains.jpg 'Sefid Rud — Chalus Pass, Iran'
+  caption 2-Spring/thecobbler.jpg 'The Cobbler — Southern Highlands, Scotland'
+  caption 2-Spring/theforest.jpg 'Northern California'
+}
+
+summer() {
+  caption 3-Summer/alta-quiet-sunset.jpg 'Alta — Norway — 69.9614, 23.2414'
+  caption 3-Summer/blue-illumination.jpg 'Newcastle — New South Wales, Australia'
+  caption 3-Summer/chicago-from-indiana.jpg 'Chicago from Indiana'
+  caption 3-Summer/clouds.jpg 'Above Bohol — Philippines'
+  caption 3-Summer/glacier-point-sunset.jpg 'Glacier Point — Yosemite, California'
+  caption 3-Summer/grandtetonsunset.jpg 'Grand Teton National Park, Wyoming'
+  caption 3-Summer/hautes-pyrenees.jpg 'Hautes-Pyrénées — Ris, France'
+  caption 3-Summer/ithilien.jpg 'Tongariro National Park — New Zealand'
+  caption 3-Summer/milford-sound-sunrise.jpg 'Milford Sound — New Zealand — -44.671545, 167.926841'
+  caption 3-Summer/pagview.jpg 'Pag Island — Croatia'
+  caption 3-Summer/pastel-tides.jpg 'Sandy Beach — Oahu, Hawaii'
+  caption 3-Summer/reflection-on-the-lake.jpg 'Lake Pukaki — New Zealand'
+  caption 3-Summer/riomaggiore-sunset.jpg 'Riomaggiore — Liguria Region, Italy'
+  caption 3-Summer/sassolungo.jpg 'Sassolungo — Seceda, Italy'
+  caption 3-Summer/sunriseinwhitby.jpg 'Whitby Harbour, U.K.'
+  caption 3-Summer/the-4am-campfire.jpg 'Beautiful Sword River — Vyazovo, Russia'
+  caption 3-Summer/the-western-divide.jpg 'Moro Rock — Sequoia National Park, California'
+  caption 3-Summer/whitesandsnationalmonument.jpg 'White Sands National Monument, New Mexico'
+}
+
+fall() {
+  caption 4-Fall/alpen-gluhenii.jpg 'Kampenwand — South Germany — 47.7552, 12.3570'
+  caption 4-Fall/break-of-dawn.jpg 'Nowhere'
+  caption 4-Fall/crawling-over-portland.jpg 'Pittock Mansion — Portland, Oregon'
+  caption 4-Fall/darkness-across.jpg 'Paulina Lake — Oregon'
+  caption 4-Fall/diamond-peak-sunset.jpg 'Diamond Peak — Oregon Cascades — 43.5736, -121.9742'
+  caption 4-Fall/dull-sunset.jpg 'Schauinsland Mountain — Freiburg, Germany'
+  caption 4-Fall/firstbeams.jpg 'Alborz Mountains — Iran'
+  caption 4-Fall/hakone-fuji-sunset.jpg 'Mount Fuji, Lake Ashi — Hakone, Japan — 35.2023, 139.0306'
+  caption 4-Fall/hautespyrenees.jpg 'Hautes-Pyrénées — Ris, France'
+  caption 4-Fall/heaven-and-earth.jpg 'Sanctuary of San Salvador — Mallorca, Balearic Islands, Spain'
+  caption 4-Fall/hollental.jpg 'Höllentalklamm — Zugspitze — Germany'
+  caption 4-Fall/kvalavag.jpg 'Boathouse — Kvalavåg, Norway'
+  caption 4-Fall/loneguardian.jpg "O'Briens Tower — Cliffs Of Moher, Ireland"
+  caption 4-Fall/milkywayoverathawingbowlake.jpg 'Bow Lake — Banff National Park, Alberta, Canada — 51.6780, -116.4640'
+  caption 4-Fall/mountain-silhouette.jpg 'Olympic Mountains — Seattle, Washington'
+  caption 4-Fall/mountcook.jpg 'Mount Cook — New Zealand'
+  caption 4-Fall/skogafossiceland.jpg 'Skógafoss — Skógá River — Iceland'
+  caption 4-Fall/sunset-blue-mountain.jpg 'Blue Mountain — Olympic National Park — Washington'
+  caption 4-Fall/the-eagle.jpg 'Gstaad, Switzerland — 46.4761, 7.2585'
+  caption 4-Fall/twilightislands.jpg 'Sasebo-city — Nagasaki, Japan'
+}
+
+winter
+spring
+summer
+fall

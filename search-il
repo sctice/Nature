@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+search_interface_lift() {
+  local dir="$1" || { echo "need directory"; exit 1; }
+  local rest=$(perl -le 'print int(rand(10-3)) + 3')
+
+  for p in "$dir"/*.jpg; do
+    f=$(basename $p)
+    echo "$f"
+    open "https://www.google.com/search?q=${f%.jpg}+site%3Ainterfacelift.com"
+    sleep $rest
+  done
+}
+
+search_interface_lift "$@"
